@@ -1,0 +1,15 @@
+@use 'scss-global/vars' as vars;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 19px 40px;
+  width: 100%;
+  background-color: vars.$color-gray;
+  color: vars.$color-white;
+  line-height: 17px;
+}
+
+.name {
+  font-weight: 700;
+}

@@ -1,0 +1,9 @@
+.recharts-wrapper .recharts-cartesian-grid-horizontal line:nth-last-child(-n + 2),
+.recharts-wrapper .recharts-cartesian-grid-vertical line:first-child,
+.recharts-wrapper .recharts-cartesian-grid-vertical line:last-child {
+  stroke-opacity: 0 !important;
+}
+
+.recharts-tooltip-wrapper {
+  display: none;
+}

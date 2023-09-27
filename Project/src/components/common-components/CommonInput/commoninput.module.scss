@@ -1,0 +1,5 @@
+@use 'scss-global/vars' as vars;
+
+.errorMessage {
+  color: vars.$color-secondary;
+}

@@ -1,0 +1,23 @@
+TODOs:
+
+  - AddStatistics state
+    - Add statisticsPage logic
+
+  - Check TODOs and console.logs 
+  - Check linter
+
+  - Add delete confirmation modal
+  - Add task moving functionality
+
+  - Add some basic tests (no more than 4 hours of work)
+  - Deploy app on Github Pages
+  - Commit to GitLab
+
+  - Write readme
+
+  - Replace easy-peasy with redux
+  - Add tests
+  - Add subdropdown for moving tasks
+
+  - Delete notes.txt probably
+  - Delete App.test.tsx probably

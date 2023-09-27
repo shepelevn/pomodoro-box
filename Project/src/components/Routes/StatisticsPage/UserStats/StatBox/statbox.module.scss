@@ -1,0 +1,36 @@
+@use 'scss-global/vars' as vars;
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  z-index: 100;
+  color: vars.$color-black;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+}
+
+.value {
+  z-index: 100;
+  color: vars.$color-black;
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.icon {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 129px;
+  height: 129px;
+}
+
+@media (max-width: 1199px) {
+  .title {
+    margin-bottom: 20px;
+  }
+}

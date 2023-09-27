@@ -1,0 +1,41 @@
+@use 'scss-global/vars' as vars;
+
+.menuButton {
+  display: block;
+  padding: 7px 4px;
+  border-radius: 50%;
+  color: vars.$color-gray;
+  transition-property: color, background-color;
+
+  &:hover {
+    background-color: vars.$color-gray;
+    color: vars.$color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-gray;
+  }
+
+  &:active {
+    background-color: rgba(vars.$color-gray, 0.8);
+    transition-property: none;
+  }
+}
+
+.menuItemButton {
+  color: vars.$color-gray-dark;
+  font-weight: 300;
+  line-height: 17px;
+
+  &_disabled {
+    & .menuItemButtonIcon {
+      color: vars.$color-gray;
+    }
+  }
+}
+
+.menuItemButtonIcon {
+  margin-right: 8px;
+  vertical-align: sub;
+  color: vars.$color-primary;
+}

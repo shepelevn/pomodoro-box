@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  gap: 32px;
+  width: 100%;
+}
+
+.box {
+  position: relative;
+  flex: 1 1 0;
+  height: 179px;
+}
+
+.focus {
+  color: #FFAE35;
+  background-color: #FFDDA9;
+}
+
+.pausedTime {
+  color: #9C97D7;
+  background-color: #DFDCFE;
+}
+
+.stops {
+  color: #7FC2D7;
+  background-color: #C5F1FF;
+}
+
+.stopsValue {
+  font-size: 72px;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .box {
+    // flex: 0 0 auto;
+    // width: 400px;
+    width: 100%;
+    height: 100px;
+  }
+}

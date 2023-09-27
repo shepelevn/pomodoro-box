@@ -1,0 +1,25 @@
+@use 'scss-global/vars' as vars;
+
+.section {
+  max-width: 370px;
+}
+
+.form {
+  margin-bottom: 25px;
+}
+
+.list {
+  margin-bottom: 19px;
+}
+
+.timeToComplete {
+  color: vars.$color-gray-dark;
+  font-weight: 300;
+  line-height: 17px;
+}
+
+@media (max-width: 1199px) {
+  .section {
+    max-width: 900px;
+  }
+}

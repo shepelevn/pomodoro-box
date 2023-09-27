@@ -1,0 +1,47 @@
+@use 'scss-global/vars' as vars;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: vars.$color-gray-lighter;
+}
+
+.responsiveContainer {
+  z-index: 100;
+  position: relative;
+  background-color: transparent;
+}
+
+.bottomBackground {
+  position: absolute;
+  bottom: 0;
+  height: 55px;
+  width: 100%;
+  background-color: #ECECEC;
+}
+
+.activeCell {
+  fill: vars.$color-secondary;
+}
+
+.inactiveCell {
+  fill: vars.$color-secondary-lighter;
+
+  &:hover {
+    fill: vars.$color-secondary-light;
+  }
+}
+
+.disabledCell {
+  fill: vars.$color-gray;
+}
+
+.bottomRectangle {
+  width: 100px;
+  height: 100px;
+  fill: red;
+  stroke: red;
+  color: red;
+  background-color: red;
+}

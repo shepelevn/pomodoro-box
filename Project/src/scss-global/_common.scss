@@ -1,0 +1,152 @@
+@use 'vars' as vars;
+@use 'mixins' as mixins;
+
+body {
+  font-size: 16px;
+}
+
+.clear-input {
+  color: vars.$color-black;
+}
+
+.container {
+  margin: 104px auto;
+  padding: 0 80px;
+  max-width: 1440px;
+}
+
+.common-button {
+  padding: 15px 50px;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  color: vars.$color-white;
+}
+
+.common-input {
+  padding: 19px 15px;
+  background-color: vars.$color-gray-lighter;
+  border: none;
+  outline: 1px solid transparent;
+  color: vars.$color-black;
+
+  transition-property: outline;
+
+  &:hover, &:focus-visible {
+    outline: 1px solid vars.$color-gray;
+  }
+
+  &:focus-visible {
+    transition-property: none;
+  }
+
+  &::placeholder {
+    color: vars.$color-gray-dark;
+  }
+
+  &_invalid {
+    outline: 1px solid vars.$color-secondary;
+  }
+}
+
+.common-link {
+  color: vars.$color-secondary;
+  transition-property: color;
+
+  &:hover {
+    color: vars.$color-secondary-dark;
+  }
+
+  &:focus-visible {
+    outline: 1px solid vars.$color-secondary;
+    outline-offset: 4px;
+  }
+
+  &:active {
+    color: vars.$color-secondary-light;
+  }
+}
+
+.common-list {
+  list-style-image: url('../images/bullet.svg');
+}
+
+.primary-button {
+  @extend .common-button;
+
+  background-color: vars.$color-primary;
+  transition-property: background-color;
+
+  &:hover {
+    background-color: vars.$color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-primary-dark;
+    transition-property: none;
+  }
+
+  &:active {
+    background-color: rgba(vars.$color-primary, 0.8);
+    transition-property: none;
+  }
+
+  &:disabled {
+    background-color: vars.$color-gray;
+  }
+}
+
+.secondary-button {
+  @extend .common-button;
+
+  outline: 2px solid vars.$color-secondary;
+  color: vars.$color-secondary;
+  transition-property: color, background-color, outline-color;
+
+  &:hover, &:focus-visible, &:active {
+    outline-color: transparent;
+    color: vars.$color-white;
+    background-color: vars.$color-secondary;
+  }
+
+  &:focus-visible {
+    transition-property: none;
+  }
+
+  &:active {
+    background-color: vars.$color-secondary-dark;
+    transition-property: none;
+  }
+
+  &:disabled {
+    outline-color: vars.$color-gray;
+    color: vars.$color-gray;
+    background-color: transparent;
+  }
+}
+
+.round-button {
+  padding: 17px;
+  border-radius: 50%;
+  border: none;
+  background-color: vars.$color-gray;
+  transition-property: background-color;
+
+  &:hover, &:focus-visible {
+    background-color: vars.$color-primary-dark;
+  }
+
+  &:active {
+    background-color: rgba(vars.$color-primary-dark, 0.8);
+    transition-property: none;
+  }
+}
+
+.common-box-container {
+  padding: 25px;
+  background-color: vars.$color-gray-lighter;
+}
+
+.screen-reader-text {
+  visibility: hidden;
+}

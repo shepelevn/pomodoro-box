@@ -1,0 +1,37 @@
+@use 'scss-global/vars' as vars;
+
+.container {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.tomatoImage {
+  width: 81px;
+  height: 81px;
+}
+
+.pomodoroCount {
+  color: vars.$color-gray-dark;
+}
+
+.bottomContainer {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  color: vars.$color-white;
+  text-align: center;
+  background-color: vars.$color-secondary;
+}
+
+@media (max-width: 1199px) {
+  .topContainer {
+    height: 100%;
+  }
+}

@@ -1,0 +1,21 @@
+@use 'scss-global/vars' as vars;
+
+.szh-menu {
+  border-radius: 0;
+  border: 1px solid vars.$color-gray;
+  box-shadow: none;
+}
+
+.szh-menu__arrow {
+  border-top: 1px solid vars.$color-gray;
+  border-left: 1px solid vars.$color-gray;
+}
+
+.szh-menu__item {
+  padding-left: 14px;
+  padding-right: 15px;
+}
+
+.szh-menu__item--hover {
+  background-color: vars.$color-gray-lighter;
+}

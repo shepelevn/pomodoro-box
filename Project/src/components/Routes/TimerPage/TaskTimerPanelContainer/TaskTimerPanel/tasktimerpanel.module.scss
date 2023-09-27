@@ -1,0 +1,77 @@
+@use 'scss-global/vars' as vars;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 107px;
+  background-color: vars.$color-gray-lighter;
+
+  &_running {
+    & .header {
+      background-color: vars.$color-secondary;
+    }
+
+    & .timer {
+      color: vars.$color-secondary;
+    }
+  }
+
+  &_paused {
+    & .header {
+      background-color: vars.$color-secondary;
+    }
+  }
+
+  &_breakRunning {
+    & .header {
+      background-color: vars.$color-primary;
+    }
+
+    & .timer {
+      color: vars.$color-primary;
+    }
+  }
+
+  &_breakPaused {
+    & .header {
+      background-color: vars.$color-primary;
+    }
+  }
+}
+
+.header {
+  margin-bottom: 70px;
+}
+
+.taskInfo {
+  margin-bottom: 32px;
+}
+
+.taskNumber {
+  color: vars.$color-gray-dark;
+}
+
+.controlButtons {
+  display: flex;
+  gap: 25px;
+}
+
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 507px;
+  background-color: vars.$color-gray-lighter;
+}
+
+.emptyContainerTitle {
+  font-size: 35px;
+}
+
+.emptyContainerDescription {
+  font-size: 24px;
+}
