@@ -18,7 +18,7 @@ import {
 
 import { CustomTick } from './CustomTick';
 
-import formatMinToHourString from 'utils/formatMinToHourString';
+import formatMinToHourString from 'utils/formatTime/formatMinToHourString';
 
 import './chart.scss';
 import styles from './chart.module.scss';

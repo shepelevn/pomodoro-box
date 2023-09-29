@@ -1,5 +1,9 @@
 @use 'scss-global/vars' as vars;
 
+.container {
+  min-width: 296px;
+}
+
 .title {
   margin-bottom: 14px;
   font-size: 24px;

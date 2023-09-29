@@ -10,8 +10,8 @@ import {
 import upImg from './svg/up.svg';
 import downImg from './svg/down.svg';
 
-interface OptionData {
-  value: string;
+export interface OptionData {
+  value: number;
   label: string;
 }
 

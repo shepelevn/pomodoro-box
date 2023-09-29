@@ -63,13 +63,8 @@ export function TaskTimerPanelContainer({
     addPausedTime();
   });
 
-  // TODO: Add reset logic
-  const [
-    { currentDayStats: currentDay },
-    {
-      currentDayStats: { incrementCurrentDayTasksCount, resetCurrentDayStats },
-    },
-  ] = useTimerStatsState();
+  const { currentDayTasksCount, incrementCurrentDayTasksCount } =
+    useTimerStatsState();
 
   const currentTask = useStoreState((state) => state.currentTask);
   const { changeCurrentTask, incrementDonePomodoroCount } = useStoreActions(
@@ -107,7 +102,7 @@ export function TaskTimerPanelContainer({
       className={className}
       timerState={timerState}
       task={currentTask}
-      currentDayTasksCount={currentDay.currentDayTasksCount}
+      currentDayTasksCount={currentDayTasksCount}
       timerTime={timerTime}
       addTimeCallback={addTime}
       primaryButtonHandle={primaryButtonHandle}

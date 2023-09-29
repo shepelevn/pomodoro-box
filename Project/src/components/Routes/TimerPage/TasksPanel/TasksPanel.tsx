@@ -11,7 +11,7 @@ import { NewTaskForm } from './NewTaskForm';
 import { TasksList } from './TasksList';
 
 import styles from './taskspanel.module.scss';
-import formatMinToHourString from 'utils/formatMinToHourString';
+import formatMinToHourString from 'utils/formatTime/formatMinToHourString';
 
 const { useStoreState } = createTypedHooks<EasyPeasyStoreModel>();
 

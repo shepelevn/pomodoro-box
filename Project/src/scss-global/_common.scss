@@ -94,6 +94,25 @@ body {
   &:disabled {
     background-color: vars.$color-gray;
   }
+
+  &_red {
+    background-color: vars.$color-secondary;
+    transition-property: background-color;
+
+    &:hover {
+      background-color: vars.$color-secondary-dark;
+    }
+
+    &:focus-visible {
+      outline: 2px solid vars.$color-secondary-dark;
+      transition-property: none;
+    }
+
+    &:active {
+      background-color: rgba(vars.$color-secondary, 0.8);
+      transition-property: none;
+    }
+  }
 }
 
 .secondary-button {
@@ -138,6 +157,21 @@ body {
 
   &:active {
     background-color: rgba(vars.$color-primary-dark, 0.8);
+    transition-property: none;
+  }
+}
+
+.underlined-button {
+  color: vars.$color-black;
+  border-bottom: 1px solid vars.$color-black;
+  transition-property: opacity;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 1;
     transition-property: none;
   }
 }

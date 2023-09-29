@@ -1,12 +1,12 @@
 import { Action, action } from 'easy-peasy';
 
-interface DayStats {
+export interface DayStats {
   totalTime: number;
   donePomodoroCount: number;
-  lastRecordDate: Date;
+  lastRecordDate: Date | null;
 }
 
-interface WeekStats {
+export interface WeekStats {
   focusedTime: number;
   unfocusedTime: number;
   pausedTime: number;
@@ -14,7 +14,7 @@ interface WeekStats {
   lastRecordDate: Date;
 }
 
-interface ChartStat {
+export interface ChartStat {
   totalTime: number;
   createdDate: Date;
 }
@@ -34,12 +34,14 @@ export interface StatisticsModel {
   pushNewChartStat: Action<StatisticsModel>;
 }
 
+const initialDayStats = {
+  totalTime: 0,
+  donePomodoroCount: 0,
+  lastRecordDate: null,
+};
+
 export const statisticsModel: StatisticsModel = {
-  dayStats: {
-    totalTime: 0,
-    donePomodoroCount: 0,
-    lastRecordDate: new Date(),
-  },
+  dayStats: initialDayStats,
 
   weekStatsArray: [],
 

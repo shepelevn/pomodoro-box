@@ -24,6 +24,8 @@ export interface TasksModel {
   deleteTask: Action<TasksModel, number>;
 
   deleteTaskAndCurrent: Action<TasksModel, number>;
+
+  moveTask: Action<TasksModel, { id: number; direction: 'up' | 'down' }>;
 }
 
 export const tasksModel: TasksModel = {
@@ -52,8 +54,20 @@ export const tasksModel: TasksModel = {
   deleteTask: action((state, id) => {
     state.tasks = state.tasks.filter((task) => task.id !== id);
   }),
+
   deleteTaskAndCurrent: action((state, id) => {
     state.tasks = state.tasks.filter((task) => task.id !== id);
+  }),
+
+  moveTask: action((state, { id, direction }) => {
+    const index = state.tasks.findIndex((value) => value.id === id);
+    const newIndex = index + (direction === 'down' ? 1 : -1);
+
+    if (newIndex >= 0 && newIndex < state.tasks.length) {
+      const temp = state.tasks[index];
+      state.tasks[index] = state.tasks[newIndex];
+      state.tasks[newIndex] = temp;
+    }
   }),
 };
 

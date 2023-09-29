@@ -1,22 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { CommonSelect } from 'components/common-components/CommonSelect';
+import {
+  CommonSelect,
+  OptionData,
+} from 'components/common-components/CommonSelect';
 
-const SELECT_OPTIONS = [
-  { value: 'current', label: 'Эта неделя' },
-  { value: '1previous', label: 'Прошедшая неделя' },
-  { value: '2previous', label: '2 недели назад' },
-  { value: '3previous', label: '3 недели назад' },
-  { value: '4previous', label: '4 недели назад' },
+const SELECT_OPTIONS: OptionData[] = [
+  { value: 0, label: 'Эта неделя' },
+  { value: 1, label: 'Прошедшая неделя' },
+  { value: 2, label: '2 недели назад' },
+  { value: 3, label: '3 недели назад' },
+  { value: 4, label: '4 недели назад' },
 ];
 
-export function WeekSelect() {
+interface WeekSelectProps {
+  setWeekCallback: (week: number) => void;
+}
+
+export function WeekSelect({ setWeekCallback }: WeekSelectProps) {
   const [value, setValue] = useState(SELECT_OPTIONS[0]);
+
+  const handleChange = (option: OptionData) => {
+    setValue(option);
+    setWeekCallback(option.value);
+  };
 
   return (
     <CommonSelect
       value={value}
-      changeCallback={setValue}
+      changeCallback={handleChange}
       options={SELECT_OPTIONS}
     />
   );

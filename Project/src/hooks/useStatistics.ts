@@ -31,6 +31,9 @@ export function useStatistics() {
   }, []);
 
   return {
+    dayStats,
+    weekStatsArray,
+    chartStats,
     addCurrentDayStatTotalTime,
     addCurrentDayStatPomodoro,
     addFocusedTime,
@@ -83,11 +86,11 @@ export function useStatistics() {
   function checkStatisticsDataDates(): void {
     const now = new Date();
 
-    if (!isSameDay(now, dayStats.lastRecordDate)) {
+    if (!dayStats.lastRecordDate || !isSameDay(now, dayStats.lastRecordDate)) {
       changeDayStats({
         totalTime: 0,
         donePomodoroCount: 0,
-        lastRecordDate: now,
+        lastRecordDate: new Date(),
       });
     }
 

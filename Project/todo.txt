@@ -1,15 +1,14 @@
 TODOs:
 
-  - AddStatistics state
-    - Add statisticsPage logic
+  - Make user stats work for a day instead of a week
 
   - Check TODOs and console.logs 
+  - Check for errors in console
   - Check linter
 
-  - Add delete confirmation modal
-  - Add task moving functionality
+  - Delete notes.txt probably
+  - Delete App.test.tsx probably
 
-  - Add some basic tests (no more than 4 hours of work)
   - Deploy app on Github Pages
   - Commit to GitLab
 
@@ -18,6 +17,4 @@ TODOs:
   - Replace easy-peasy with redux
   - Add tests
   - Add subdropdown for moving tasks
-
-  - Delete notes.txt probably
-  - Delete App.test.tsx probably
+  - Change simple-react-modal to other library

@@ -1,30 +1,22 @@
-import { persist, useLocalStore } from 'easy-peasy';
 import { useEffect } from 'react';
-import { isSameDay } from 'utils/date/isSameDay';
 
-import { currentDayStats, CurrentDayStatsModel } from './currentDayStats';
+import { createTypedHooks } from 'easy-peasy';
 
-interface TimerStatsStoreModel {
-  currentDayStats: CurrentDayStatsModel;
-}
+import { EasyPeasyStoreModel } from 'utils/easyPeasy/store';
 
-export function useTimerStatsState(): ReturnType<
-  typeof useLocalStore<TimerStatsStoreModel>
-> {
-  const [state, actions, store] = useLocalStore<TimerStatsStoreModel>(
-    () =>
-      persist({
-        currentDayStats,
-      }),
-    [],
-    () => ({ version: 6 })
+const { useStoreState, useStoreActions } =
+  createTypedHooks<EasyPeasyStoreModel>();
+
+export function useTimerStatsState() {
+  const { currentDayTasksCount } = useStoreState(
+    (state) => state.currentDayStats
   );
+  const { incrementCurrentDayTasksCount, checkCurrentDayDate } =
+    useStoreActions((actions) => actions.currentDayStats);
 
   useEffect(() => {
-    if (!isSameDay(state.currentDayStats.lastRecordDate, new Date())) {
-      actions.currentDayStats.resetCurrentDayStats();
-    }
+    checkCurrentDayDate();
   }, []);
 
-  return [state, actions, store];
+  return { currentDayTasksCount, incrementCurrentDayTasksCount };
 }

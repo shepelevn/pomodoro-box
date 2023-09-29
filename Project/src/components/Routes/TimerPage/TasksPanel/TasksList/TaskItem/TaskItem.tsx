@@ -5,13 +5,13 @@ import { EasyPeasyStoreModel } from 'utils/easyPeasy/store';
 
 import { EditableField } from 'components/common-components/EditableField';
 import { TaskMenuDropdown } from './TaskMenuDropdown';
+import { DeleteModal } from './DeleteModal';
+
+import { MAX_NAME_LENGTH } from 'globalVariables';
 
 import styles from './taskitem.module.scss';
-import { MAX_NAME_LENGTH } from 'globalVariables';
-import { Task } from 'utils/easyPeasy/tasks';
-import { setNewCurrentTaskByAction } from 'utils/easyPeasy/setNewCurrentTask';
 
-const { useStoreActions } = createTypedHooks<EasyPeasyStoreModel>();
+const { useStoreState, useStoreActions } = createTypedHooks<EasyPeasyStoreModel>();
 
 interface TaskItemProps {
   name: string;
@@ -20,13 +20,21 @@ interface TaskItemProps {
 }
 
 export function TaskItem({ name, pomodoroCount, id }: TaskItemProps) {
-  const { changeTask, changeTaskPomodoroCount, deleteTaskAndCurrent } =
-    useStoreActions((actions) => actions.tasks);
+  const { tasks } = useStoreState((state) => state.tasks);
+  const index = tasks.findIndex((value) => value.id === id);
+
+  const {
+    changeTask,
+    changeTaskPomodoroCount,
+    deleteTaskAndCurrent,
+    moveTask,
+  } = useStoreActions((actions) => actions.tasks);
   const { changeCurrentTask } = useStoreActions(
     (actions) => actions.currentTask
   );
 
   const [isNameEditable, setIsNameEditable] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   return (
     <li className={styles.item}>
@@ -53,9 +61,17 @@ export function TaskItem({ name, pomodoroCount, id }: TaskItemProps) {
         editCallback={() => {
           setIsNameEditable(true);
         }}
+        deleteCallback={showDeleteModal}
+        moveUpCallback={index > 0 ? moveUp : undefined}
+        moveDownCallback={index < tasks.length - 1 ? moveDown : undefined}
+      />
+
+      <DeleteModal
         deleteCallback={() => {
           deleteTaskAndCurrent(id);
         }}
+        isOpen={isDeleteModalOpen}
+        setIsOpen={setIsDeleteModalOpen}
       />
     </li>
   );
@@ -80,5 +96,17 @@ export function TaskItem({ name, pomodoroCount, id }: TaskItemProps) {
     });
 
     changeCurrentTask([id, safeName]);
+  }
+
+  function showDeleteModal() {
+    setIsDeleteModalOpen(true);
+  }
+
+  function moveUp() {
+    moveTask({ id, direction: 'up' });
+  }
+
+  function moveDown() {
+    moveTask({ id, direction: 'down' });
   }
 }

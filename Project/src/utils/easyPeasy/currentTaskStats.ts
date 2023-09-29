@@ -16,7 +16,7 @@ export interface CurrentTaskStatsModel extends CurrentTaskData {
 
   incrementDonePomodoroCount: Action<CurrentTaskStatsModel>;
 
-  onDeleteTask: ThunkOn<CurrentTaskStatsModel, any, EasyPeasyStoreModel>;
+  onCurrentTaskChange: ThunkOn<CurrentTaskStatsModel, any, EasyPeasyStoreModel>;
 }
 
 export const currentTaskStats: CurrentTaskStatsModel = {
@@ -34,8 +34,11 @@ export const currentTaskStats: CurrentTaskStatsModel = {
     state.donePomodoroCount++;
   }),
 
-  onDeleteTask: thunkOn(
-    (_, storeActions) => storeActions.tasks.deleteTaskAndCurrent,
+  onCurrentTaskChange: thunkOn(
+    (_, storeActions) => [
+      storeActions.tasks.deleteTaskAndCurrent,
+      storeActions.tasks.moveTask,
+    ],
     (actions) => {
       actions.changeCurrentTask([undefined, '']);
     }
