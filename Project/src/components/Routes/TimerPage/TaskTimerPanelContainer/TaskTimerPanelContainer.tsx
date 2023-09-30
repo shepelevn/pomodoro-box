@@ -91,6 +91,7 @@ export function TaskTimerPanelContainer({
     getTimerHandlers(timerState);
 
   const {
+    dayStats,
     addCurrentDayStatTotalTime,
     addCurrentDayStatPomodoro,
     addFocusedTime,
@@ -195,7 +196,7 @@ export function TaskTimerPanelContainer({
   }
 
   function setTimerBreakStart() {
-    if (currentTask.donePomodoroCount === BIG_BREAK_NUMBER)
+    if (dayStats.donePomodoroCount % BIG_BREAK_NUMBER === 3)
       resetTimer(BIG_BREAK_TIME_MINUTES * 60);
     else resetTimer(DEFAULT_BREAK_TIME_MINUTES * 60);
 
