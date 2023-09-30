@@ -101,11 +101,13 @@ export function TaskTimerPanel({
       </div>
     </div>
   ) : (
-    <div className={styles.emptyContainer}>
-      <h2 className={styles.emptyContainerTitle}>Список задач пуст</h2>
-      <p className={styles.emptyContainerDescription}>
-        Чтобы начать работу, добавьте задачу.
-      </p>
+    <div className={className}>
+      <div className={styles.emptyContainer}>
+        <h2 className={styles.emptyContainerTitle}>Список задач пуст</h2>
+        <p className={styles.emptyContainerDescription}>
+          Чтобы начать работу, добавьте задачу.
+        </p>
+      </div>
     </div>
   );
 }

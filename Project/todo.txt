@@ -1,6 +1,4 @@
 TODOs:
-  - Commit to GitLab
-  - Write readme
   - Deploy app on Github Pages
 
 
