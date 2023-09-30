@@ -3,15 +3,11 @@ import { Action, action } from 'easy-peasy';
 export interface DayStats {
   totalTime: number;
   donePomodoroCount: number;
-  lastRecordDate: Date | null;
-}
-
-export interface WeekStats {
   focusedTime: number;
   unfocusedTime: number;
   pausedTime: number;
   stops: number;
-  lastRecordDate: Date;
+  lastRecordDate: Date | null;
 }
 
 export interface ChartStat {
@@ -21,14 +17,10 @@ export interface ChartStat {
 
 export interface StatisticsModel {
   dayStats: DayStats;
-  weekStatsArray: WeekStats[];
   chartStats: ChartStat[];
 
   changeDayStats: Action<StatisticsModel, Partial<DayStats>>;
-
-  changeCurrentWeekStats: Action<StatisticsModel, Partial<WeekStats>>;
-  addCurrentWeekStatsPausedTime: Action<StatisticsModel>;
-  pushNewWeekStat: Action<StatisticsModel>;
+  incrementPausedTimeState: Action<StatisticsModel>;
 
   addCurrentChartStatTime: Action<StatisticsModel, number>;
   pushNewChartStat: Action<StatisticsModel>;
@@ -37,13 +29,15 @@ export interface StatisticsModel {
 const initialDayStats = {
   totalTime: 0,
   donePomodoroCount: 0,
+  focusedTime: 0,
+  unfocusedTime: 0,
+  pausedTime: 0,
+  stops: 0,
   lastRecordDate: null,
 };
 
 export const statisticsModel: StatisticsModel = {
   dayStats: initialDayStats,
-
-  weekStatsArray: [],
 
   chartStats: [],
 
@@ -51,30 +45,8 @@ export const statisticsModel: StatisticsModel = {
     state.dayStats = { ...state.dayStats, ...payload };
   }),
 
-  changeCurrentWeekStats: action((state, payload) => {
-    const statsArray = state.weekStatsArray;
-    const lastIndex = statsArray.length - 1;
-    state.weekStatsArray[lastIndex] = {
-      ...statsArray[lastIndex],
-      ...payload,
-    };
-  }),
-
-  addCurrentWeekStatsPausedTime: action((state) => {
-    const statsArray = state.weekStatsArray;
-    const lastIndex = statsArray.length - 1;
-
-    state.weekStatsArray[lastIndex].pausedTime += 1;
-  }),
-
-  pushNewWeekStat: action((state) => {
-    state.weekStatsArray.push({
-      focusedTime: 0,
-      unfocusedTime: 0,
-      pausedTime: 0,
-      stops: 0,
-      lastRecordDate: new Date(),
-    });
+  incrementPausedTimeState: action((state) => {
+    state.dayStats.pausedTime += 1;
   }),
 
   addCurrentChartStatTime: action((state, payload) => {

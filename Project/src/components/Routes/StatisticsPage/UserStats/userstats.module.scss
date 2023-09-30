@@ -1,3 +1,5 @@
+@use 'scss-global/vars' as vars;
+
 .container {
   display: flex;
   gap: 32px;
@@ -23,6 +25,11 @@
 .stops {
   color: #7FC2D7;
   background-color: #C5F1FF;
+}
+
+.disabled {
+  color: vars.$color-gray;
+  background-color: vars.$color-gray-lighter;
 }
 
 .stopsValue {

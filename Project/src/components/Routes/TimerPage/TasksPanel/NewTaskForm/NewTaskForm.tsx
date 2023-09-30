@@ -45,6 +45,7 @@ export function NewTaskForm({ className }: NewTaskFormProps) {
         errorMessage={nameInputErrorMessage}
         isActive={isFormActive}
         placeholder="Название задачи"
+        name="task-name-input"
       />
       <button className="primary-button" type="submit">
         Добавить

@@ -1,22 +1,17 @@
 import { createTypedHooks } from 'easy-peasy';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { EasyPeasyStoreModel } from 'utils/easyPeasy/store';
 import { isSameDay } from 'utils/date/isSameDay';
-import { isSameWeek } from 'utils/date/isSameWeek';
 
 const { useStoreState, useStoreActions } =
   createTypedHooks<EasyPeasyStoreModel>();
 
 export function useStatistics() {
-  const { dayStats, weekStatsArray, chartStats } = useStoreState(
-    (state) => state.statistics
-  );
+  const { dayStats, chartStats } = useStoreState((state) => state.statistics);
   const {
     changeDayStats,
-    changeCurrentWeekStats,
-    addCurrentWeekStatsPausedTime,
-    pushNewWeekStat,
+    incrementPausedTimeState,
     addCurrentChartStatTime,
     pushNewChartStat,
   } = useStoreActions((actions) => actions.statistics);
@@ -32,7 +27,6 @@ export function useStatistics() {
 
   return {
     dayStats,
-    weekStatsArray,
     chartStats,
     addCurrentDayStatTotalTime,
     addCurrentDayStatPomodoro,
@@ -52,30 +46,24 @@ export function useStatistics() {
   }
 
   function addFocusedTime(time: number) {
-    const lastIndex = weekStatsArray.length - 1;
-
-    changeCurrentWeekStats({
-      focusedTime: weekStatsArray[lastIndex].focusedTime + time,
+    changeDayStats({
+      focusedTime: dayStats.focusedTime + time,
     });
   }
 
   function addUnfocusedTime(time: number) {
-    const lastIndex = weekStatsArray.length - 1;
-
-    changeCurrentWeekStats({
-      unfocusedTime: weekStatsArray[lastIndex].unfocusedTime + time,
+    changeDayStats({
+      unfocusedTime: dayStats.unfocusedTime + time,
     });
   }
 
   function addPausedTime() {
-    addCurrentWeekStatsPausedTime();
+    incrementPausedTimeState();
   }
 
   function addStop() {
-    const lastIndex = weekStatsArray.length - 1;
-
-    changeCurrentWeekStats({
-      stops: weekStatsArray[lastIndex].stops + 1,
+    changeDayStats({
+      stops: dayStats.stops + 1,
     });
   }
 
@@ -90,14 +78,12 @@ export function useStatistics() {
       changeDayStats({
         totalTime: 0,
         donePomodoroCount: 0,
+        focusedTime: 0,
+        unfocusedTime: 0,
+        pausedTime: 0,
+        stops: 0,
         lastRecordDate: new Date(),
       });
-    }
-
-    const weekStatsDate =
-      weekStatsArray[weekStatsArray.length - 1]?.lastRecordDate;
-    if (!weekStatsDate || !isSameWeek(now, weekStatsDate)) {
-      pushNewWeekStat();
     }
 
     const chartStatDate = chartStats[chartStats.length - 1]?.createdDate;

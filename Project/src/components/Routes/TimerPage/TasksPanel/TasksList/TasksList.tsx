@@ -4,8 +4,6 @@ import { Task } from 'utils/easyPeasy/tasks';
 
 import { TaskItem } from './TaskItem';
 
-import styles from './taskslist.module.scss';
-
 interface TasksListProps {
   className: string;
   tasks: Task[];

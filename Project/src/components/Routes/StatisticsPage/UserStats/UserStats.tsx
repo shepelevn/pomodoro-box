@@ -4,25 +4,18 @@ import { ReactComponent as TargetSvg } from './svg/target.svg';
 import { ReactComponent as ClockSvg } from './svg/clock.svg';
 import { ReactComponent as StopSvg } from './svg/stop.svg';
 
-import { WeekStats } from 'utils/easyPeasy/statistics';
+import formatMinToShortHourString from 'utils/formatTime/formatMinToShortHourString';
+import { DayStats } from 'utils/easyPeasy/statistics';
 import { StatBox } from './StatBox';
 
 import styles from './userstats.module.scss';
-import formatMinToShortHourString from 'utils/formatTime/formatMinToShortHourString';
 
 interface UserStatsProps {
-  statsArray: WeekStats[];
-  selectedWeek: number;
+  stats: DayStats;
 }
 
-export function UserStats({ statsArray, selectedWeek }: UserStatsProps) {
-  const uncheckedStats = statsArray[selectedWeek];
-  const stats: WeekStats = uncheckedStats || {
-    focusedTime: 0,
-    unfocusedTime: 0,
-    pausedTime: 0,
-    stops: 0,
-  };
+export function UserStats({ stats }: UserStatsProps) {
+  const isBoxActive = stats.totalTime !== 0;
 
   const focusPercentage = getFocusPercentage(
     stats.focusedTime,
@@ -36,19 +29,25 @@ export function UserStats({ statsArray, selectedWeek }: UserStatsProps) {
   return (
     <div className={styles.container}>
       <StatBox
-        className={`${styles.box} ${styles.focus}`}
+        className={`${styles.box} ${styles.focus} ${
+          isBoxActive || styles.disabled
+        }`}
         title="Фокус"
         value={`${focusPercentage}%`}
         IconComponent={TargetSvg}
       />
       <StatBox
-        className={`${styles.box} ${styles.pausedTime}`}
+        className={`${styles.box} ${styles.pausedTime} ${
+          isBoxActive || styles.disabled
+        }`}
         title="Время на паузе"
         value={pausedTimeString}
         IconComponent={ClockSvg}
       />
       <StatBox
-        className={`${styles.box} ${styles.stops}`}
+        className={`${styles.box} ${styles.stops} ${
+          isBoxActive || styles.disabled
+        }`}
         valueClassName={styles.stopsValue}
         title="Остановки"
         value={stats.stops.toString()}

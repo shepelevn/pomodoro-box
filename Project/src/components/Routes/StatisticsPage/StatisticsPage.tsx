@@ -1,5 +1,5 @@
 import { useStatistics } from 'hooks/useStatistics';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { CurrentDayInfo } from './CurrentDayInfo';
 import { StatisticsHeader } from './StatisticsHeader';
@@ -7,9 +7,9 @@ import styles from './statisticspage.module.scss';
 import { TimerUseChart } from './TimerUseChart';
 import { UserStats } from './UserStats';
 
-export function StatisticsPage(): React.JSX.Element {
+export function StatisticsPage() {
   const [selectedWeek, setSelectedWeek] = useState(0);
-  const { dayStats, weekStatsArray, chartStats } = useStatistics();
+  const { dayStats, chartStats } = useStatistics();
 
   return (
     <div className={'container'}>
@@ -21,7 +21,7 @@ export function StatisticsPage(): React.JSX.Element {
         <CurrentDayInfo dayStats={dayStats} />
         <TimerUseChart chartStats={chartStats} selectedWeek={selectedWeek} />
       </div>
-      <UserStats statsArray={weekStatsArray} selectedWeek={selectedWeek} />
+      <UserStats stats={dayStats} />
     </div>
   );
 }

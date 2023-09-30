@@ -19,5 +19,5 @@ export const easyPeasyStore = createStore<EasyPeasyStoreModel>(
     statistics: statisticsModel,
     currentDayStats: currentDayStatsModel,
   }),
-  { version: 5 }
+  { version: 6 }
 );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createTypedHooks } from 'easy-peasy';
 
 import {
@@ -18,9 +18,12 @@ import { usePauseTime, useTimer } from './hooks/useTimer';
 import { useTimerStatsState } from './hooks/useTimerStatsState/useTimerStatsState';
 import { Task } from 'utils/easyPeasy/tasks';
 import { useStatistics } from 'hooks/useStatistics';
+import { showNotification } from 'utils/showNotification';
 
 const { useStoreState, useStoreActions } =
   createTypedHooks<EasyPeasyStoreModel>();
+
+var alarmSound = new Audio(process.env.PUBLIC_URL + '/sounds/alarm.mp3');
 
 export enum TimerState {
   Stopped,
@@ -55,7 +58,7 @@ export function TaskTimerPanelContainer({
   useEffect(() => {
     if (timerTime <= 0) {
       if (timerState === TimerState.Running) taskDone();
-      else breakDone();
+      else breakDoneWithNotification();
     }
   }, [timerTime]);
 
@@ -165,6 +168,9 @@ export function TaskTimerPanelContainer({
   }
 
   function taskDone() {
+    alarmSound.play();
+    showNotification('Время работы истекло. Сделайте перерыв.');
+
     stopPauseTimer();
 
     addCurrentDayStatTotalTime(timerTimeElapsed);
@@ -212,6 +218,13 @@ export function TaskTimerPanelContainer({
     pauseTimer();
 
     setTimerState(TimerState.BreakPaused);
+  }
+
+  function breakDoneWithNotification() {
+    alarmSound.play();
+    showNotification('Перерыв закончился.');
+
+    breakDone();
   }
 
   function breakDone() {

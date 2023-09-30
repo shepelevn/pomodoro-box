@@ -1,8 +1,9 @@
-import React, { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent } from 'react';
 import styles from './commoninput.module.scss';
 
 interface CommonInputProps {
   value: string;
+  name: string;
   onChangeCallback: (value: string) => void;
   errorMessage: string;
   isActive: boolean;
@@ -11,6 +12,7 @@ interface CommonInputProps {
 
 export function CommonInput({
   value,
+  name,
   onChangeCallback,
   errorMessage,
   isActive,
@@ -31,6 +33,7 @@ export function CommonInput({
         onChange={(event: SyntheticEvent<HTMLInputElement>) => {
           onChangeCallback(event.currentTarget.value);
         }}
+        name={name}
       />
     </div>
   );

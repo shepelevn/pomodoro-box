@@ -1,6 +1,5 @@
 import { action, Action, thunkOn, ThunkOn } from 'easy-peasy';
 import { EasyPeasyStoreModel } from './store';
-import { TasksModel } from './tasks';
 
 export interface CurrentTaskData {
   taskId: number | undefined;

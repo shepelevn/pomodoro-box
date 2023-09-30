@@ -13,7 +13,7 @@ interface TimerProps {
 export function Timer({ className, timeSeconds, addTimeCallback }: TimerProps) {
   return (
     <div className={`${className} ${styles.timer}`}>
-      <div className={styles.time}>
+      <time className={styles.time} dateTime={createDateTime(timeSeconds)}>
         {formatTime(timeSeconds)}
         <button
           className={`${styles.addButton} round-button`}
@@ -25,7 +25,7 @@ export function Timer({ className, timeSeconds, addTimeCallback }: TimerProps) {
             alt="Добавить время"
           />
         </button>
-      </div>
+      </time>
     </div>
   );
 }
@@ -35,4 +35,14 @@ function formatTime(timeSeconds: number) {
   const secondsReminder = (timeSeconds % 60).toString().padStart(2, '0');
 
   return `${minutes}:${secondsReminder}`;
+}
+
+function createDateTime(timeSeconds: number) {
+  const minutes = Math.floor(timeSeconds / 60);
+  const secondsRemainder = timeSeconds % 60;
+
+  const minutesString = minutes !== 0 ? minutes + 'M' : '';
+  const secondsString = secondsRemainder !== 0 ? secondsRemainder + 'S' : '';
+
+  return `PT${minutesString}${secondsString}`;
 }

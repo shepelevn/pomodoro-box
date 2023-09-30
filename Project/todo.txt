@@ -1,18 +1,13 @@
 TODOs:
-
-  - Make user stats work for a day instead of a week
-
-  - Check TODOs and console.logs 
-  - Check for errors in console
-  - Check linter
-
-  - Delete notes.txt probably
-  - Delete App.test.tsx probably
-
-  - Deploy app on Github Pages
   - Commit to GitLab
-
   - Write readme
+  - Deploy app on Github Pages
+
+
+  - Check TODOs console.logs and alerts
+  - Check for errors in console
+  - Check linter 
+
 
   - Replace easy-peasy with redux
   - Add tests

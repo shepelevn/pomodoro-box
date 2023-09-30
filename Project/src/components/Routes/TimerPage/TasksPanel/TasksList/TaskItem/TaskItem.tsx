@@ -11,7 +11,8 @@ import { MAX_NAME_LENGTH } from 'globalVariables';
 
 import styles from './taskitem.module.scss';
 
-const { useStoreState, useStoreActions } = createTypedHooks<EasyPeasyStoreModel>();
+const { useStoreState, useStoreActions } =
+  createTypedHooks<EasyPeasyStoreModel>();
 
 interface TaskItemProps {
   name: string;
@@ -66,13 +67,15 @@ export function TaskItem({ name, pomodoroCount, id }: TaskItemProps) {
         moveDownCallback={index < tasks.length - 1 ? moveDown : undefined}
       />
 
-      <DeleteModal
-        deleteCallback={() => {
-          deleteTaskAndCurrent(id);
-        }}
-        isOpen={isDeleteModalOpen}
-        setIsOpen={setIsDeleteModalOpen}
-      />
+      <div className={styles.modalContainer}>
+        <DeleteModal
+          deleteCallback={() => {
+            deleteTaskAndCurrent(id);
+          }}
+          isOpen={isDeleteModalOpen}
+          setIsOpen={setIsDeleteModalOpen}
+        />
+      </div>
     </li>
   );
 
