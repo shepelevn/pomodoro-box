@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+<h1>Итоговая работа pomodoro_box</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>Установка и запуск проекта</h2>
 
-## Available Scripts
+<ol>
+  <li>
+    Для запуска данного проекта вам понадобится nodejs и npm.
+  </li>
+  <li>
+    Склонируйте данный репозиторий к себе на диск. Затем выполните npm i для установки.
+  </li>
+</ul>
 
-In the project directory, you can run:
+<h2>Комманды запуска проекта:</h2>
 
-### `npm start`
+<ul>
+  <li>
+    npm start - Сборка и запуск проекта в режиме разработки. Запускает локальный сервер на localhost:3000.
+  </li>
+  <li>
+    npm run build - Сборка проекта в режиме production.
+  </li>
+</ul>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2>Комманды тестирования проекта:</h2>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<ul>
+  <li>
+    npm run lint - Проверка проекта в ESLint.
+  </li>  
+  <li>
+    npm run lint:fix - Исправление ошибок проекта в ESLint.
+  </li>
+</ul>
 
-### `npm test`
+<h2>Другие комманды проекта</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<ul>
+  <li>
+    npm run eject - Удаление create-react-app из проекта.
+  </li>
+</ul>
 
-### `npm run build`
+<h2>Примечания</h2>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<ul>
+  <li>
+    Верстка сайта выполнена для ширины от 992 пикселя.
+  </li>
+  <li>
+    Для удобства тестирования время шага таймера установлено на 10 миллисекунд вместо секунды, время работы и перерыва установлены на 2 минуты и время большого перерыва установлено на 5 минут. Эти значения можно изменить в файле src/globalVariables.ts.
+  </li>
+  <li>
+    Проект создан при помощи create-react-app.
+  </li>
+</ul>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
