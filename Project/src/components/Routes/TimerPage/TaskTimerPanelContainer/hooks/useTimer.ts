@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import {
   ADDED_TIMER_TIME_SECONDS,
@@ -13,6 +13,10 @@ export function useTimer(initialTimeSeconds: number) {
   const [timerTimeElapsed, setTimerTimeElapsed] = useState(0);
 
   const timerIntervalIdRef = useRef<TimerInterval>(undefined);
+
+  useEffect(() => {
+    return () => clearInterval(timerIntervalIdRef.current);
+  }, []);
 
   function startTimer() {
     clearInterval(timerIntervalIdRef.current);
@@ -50,6 +54,10 @@ export function useTimer(initialTimeSeconds: number) {
 
 export function usePauseTime(addTimeCallback: () => void) {
   const pauseTimerIntervalIdRef = useRef<TimerInterval>(undefined);
+
+  useEffect(() => {
+    return () => clearInterval(pauseTimerIntervalIdRef.current);
+  }, []);
 
   function startPauseTimer() {
     pauseTimerIntervalIdRef.current = setInterval(() => {

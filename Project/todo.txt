@@ -1,6 +1,6 @@
 TODOs:
-  - Deploy app on Github Pages
 
+  - Fix bug with pause counting
 
   - Check TODOs console.logs and alerts
   - Check for errors in console
@@ -10,4 +10,3 @@ TODOs:
   - Replace easy-peasy with redux
   - Add tests
   - Add subdropdown for moving tasks
-  - Change simple-react-modal to other library
