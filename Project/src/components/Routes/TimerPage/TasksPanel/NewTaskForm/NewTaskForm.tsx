@@ -36,6 +36,7 @@ export function NewTaskForm({ className }: NewTaskFormProps) {
       className={`${styles.form} ${className}`}
       aria-label="Форма добавления новой задачи"
       onSubmit={handleSubmit}
+      autoComplete="off"
     >
       <CommonInput
         value={nameInputValue}

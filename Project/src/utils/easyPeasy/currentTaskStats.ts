@@ -38,7 +38,7 @@ export const currentTaskStats: CurrentTaskStatsModel = {
       storeActions.tasks.deleteTaskAndCurrent,
       storeActions.tasks.moveTask,
     ],
-    (actions) => {
+    (actions, _, { getStoreState }) => {
       actions.changeCurrentTask([undefined, '']);
     }
   ),

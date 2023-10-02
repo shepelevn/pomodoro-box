@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createTypedHooks } from 'easy-peasy';
 
 import {
@@ -33,6 +33,11 @@ export enum TimerState {
   BreakPaused,
 }
 
+export enum TimerTaskState {
+  Task,
+  Break,
+}
+
 interface TaskTimerPanelContainerProps {
   className: string;
 }
@@ -46,6 +51,8 @@ export function TaskTimerPanelContainer({
   );
 
   const [timerState, setTimerState] = useState<TimerState>(TimerState.Stopped);
+
+  const timerTaskStateRef = useRef(TimerTaskState.Task);
 
   const {
     timerTime,
@@ -87,6 +94,19 @@ export function TaskTimerPanelContainer({
     if (currentTask.taskId === undefined) setNewCurrentTask(tasks[0]);
   }, [tasks, currentTask]);
 
+  const [previousCurrentTaskId, setPreviousCurrentTaskId] = useState(
+    currentTask.taskId
+  );
+  useEffect(() => {
+    if (
+      timerTaskStateRef.current === TimerTaskState.Task &&
+      previousCurrentTaskId !== currentTask.taskId
+    ) {
+      setTimerStop();
+      setPreviousCurrentTaskId(currentTask.taskId);
+    }
+  }, [currentTask]);
+
   const [primaryButtonHandle, secondaryButtonHandle] =
     getTimerHandlers(timerState);
 
@@ -125,7 +145,7 @@ export function TaskTimerPanelContainer({
 
     startTimer();
 
-    setTimerState(TimerState.Running);
+    updateTimerState(TimerState.Running);
   }
 
   function stopPomodoro() {
@@ -141,7 +161,7 @@ export function TaskTimerPanelContainer({
     resetTimer(DEFAULT_POMODORO_TIME_MINUTES * 60);
     pauseTimer();
 
-    setTimerState(TimerState.Stopped);
+    updateTimerState(TimerState.Stopped);
   }
 
   function setTimerPause() {
@@ -149,7 +169,7 @@ export function TaskTimerPanelContainer({
 
     pauseTimer();
 
-    setTimerState(TimerState.Paused);
+    updateTimerState(TimerState.Paused);
   }
 
   function taskDonePrematurely() {
@@ -172,15 +192,13 @@ export function TaskTimerPanelContainer({
     alarmSound.play();
     showNotification('Время работы истекло. Сделайте перерыв.');
 
-    stopPauseTimer();
-
     addCurrentDayStatTotalTime(timerTimeElapsed);
     addCurrentDayStatPomodoro();
     addFocusedTime(timerTimeElapsed);
     addChartTime(timerTimeElapsed);
 
-    incrementDonePomodoroCount();
     setTimerBreakStart();
+    incrementDonePomodoroCount();
 
     const task = tasks[0];
 
@@ -202,7 +220,7 @@ export function TaskTimerPanelContainer({
 
     startTimer();
 
-    setTimerState(TimerState.BreakRunning);
+    updateTimerState(TimerState.BreakRunning);
   }
 
   function setTimerBreakRunning() {
@@ -210,7 +228,7 @@ export function TaskTimerPanelContainer({
 
     startTimer();
 
-    setTimerState(TimerState.BreakRunning);
+    updateTimerState(TimerState.BreakRunning);
   }
 
   function setTimerBreakPause() {
@@ -218,7 +236,7 @@ export function TaskTimerPanelContainer({
 
     pauseTimer();
 
-    setTimerState(TimerState.BreakPaused);
+    updateTimerState(TimerState.BreakPaused);
   }
 
   function breakDoneWithNotification() {
@@ -269,5 +287,13 @@ export function TaskTimerPanelContainer({
     }
 
     return [primaryButtonHandle, secondaryButtonHandle];
+  }
+
+  function updateTimerState(state: TimerState): void {
+    setTimerState(state);
+
+    if (state === TimerState.BreakRunning || state === TimerState.BreakPaused)
+      timerTaskStateRef.current = TimerTaskState.Break;
+    else timerTaskStateRef.current = TimerTaskState.Task;
   }
 }

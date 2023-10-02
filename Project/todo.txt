@@ -5,6 +5,8 @@ TODOs:
   - Check linter 
 
 
+  - Turn off input autocompletion
+  - Make route paths prettier
   - Replace easy-peasy with redux
   - Add tests
   - Add subdropdown for moving tasks
