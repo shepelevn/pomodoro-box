@@ -95,17 +95,17 @@ export function TaskTimerPanelContainer({
   }, [tasks, currentTask]);
 
   const [previousCurrentTaskId, setPreviousCurrentTaskId] = useState(
-    currentTask.taskId
+    tasks[0].id
   );
   useEffect(() => {
     if (
       timerTaskStateRef.current === TimerTaskState.Task &&
-      previousCurrentTaskId !== currentTask.taskId
+      previousCurrentTaskId !== tasks[0].id
     ) {
       setTimerStop();
-      setPreviousCurrentTaskId(currentTask.taskId);
+      setPreviousCurrentTaskId(tasks[0].id);
     }
-  }, [currentTask]);
+  }, [tasks[0]]);
 
   const [primaryButtonHandle, secondaryButtonHandle] =
     getTimerHandlers(timerState);
