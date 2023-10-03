@@ -1,10 +1,8 @@
 TODOs:
-  - Make day highlight only on current week
 
   - Check TODOs console.logs and alerts
   - Check for errors in console
   - Check linter 
-
 
   - Make route paths prettier
   - Replace easy-peasy with redux

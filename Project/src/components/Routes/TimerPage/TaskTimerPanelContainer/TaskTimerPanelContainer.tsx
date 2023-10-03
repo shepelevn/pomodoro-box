@@ -94,6 +94,16 @@ export function TaskTimerPanelContainer({
     if (currentTask.taskId === undefined) setNewCurrentTask(tasks[0]);
   }, [tasks, currentTask]);
 
+  const [shownCurrentTask, setShownCurrentTask] = useState(currentTask);
+  useEffect(() => {
+    if (
+      timerTaskStateRef.current === TimerTaskState.Task ||
+      currentTask.taskId === shownCurrentTask.taskId
+    ) {
+      setShownCurrentTask(currentTask);
+    }
+  }, [currentTask, timerState]);
+
   const [previousCurrentTaskId, setPreviousCurrentTaskId] = useState(
     tasks[0]?.id || undefined
   );
@@ -126,7 +136,7 @@ export function TaskTimerPanelContainer({
     <TaskTimerPanel
       className={className}
       timerState={timerState}
-      task={currentTask}
+      task={shownCurrentTask}
       currentDayTasksCount={currentDayTasksCount}
       timerTime={timerTime}
       addTimeCallback={addTime}

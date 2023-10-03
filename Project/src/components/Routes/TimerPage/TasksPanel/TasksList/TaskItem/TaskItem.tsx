@@ -22,6 +22,7 @@ interface TaskItemProps {
 
 export function TaskItem({ name, pomodoroCount, id }: TaskItemProps) {
   const { tasks } = useStoreState((state) => state.tasks);
+  const currentTask = useStoreState((state) => state.currentTask);
   const index = tasks.findIndex((value) => value.id === id);
 
   const {
@@ -30,7 +31,7 @@ export function TaskItem({ name, pomodoroCount, id }: TaskItemProps) {
     deleteTaskAndCurrent,
     moveTask,
   } = useStoreActions((actions) => actions.tasks);
-  const { changeCurrentTask } = useStoreActions(
+  const { changeCurrentTaskName } = useStoreActions(
     (actions) => actions.currentTask
   );
 
@@ -98,7 +99,7 @@ export function TaskItem({ name, pomodoroCount, id }: TaskItemProps) {
       id,
     });
 
-    changeCurrentTask([id, safeName]);
+    if (id === currentTask.taskId) changeCurrentTaskName(safeName);
   }
 
   function showDeleteModal() {

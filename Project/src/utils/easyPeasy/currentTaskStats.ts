@@ -13,6 +13,8 @@ export interface CurrentTaskStatsModel extends CurrentTaskData {
     [id: number | undefined, name: string]
   >;
 
+  changeCurrentTaskName: Action<CurrentTaskStatsModel, string>;
+
   incrementDonePomodoroCount: Action<CurrentTaskStatsModel>;
 
   onCurrentTaskChange: ThunkOn<CurrentTaskStatsModel, any, EasyPeasyStoreModel>;
@@ -29,6 +31,10 @@ export const currentTaskStats: CurrentTaskStatsModel = {
     state.donePomodoroCount = 1;
   }),
 
+  changeCurrentTaskName: action((state, name) => {
+    state.taskName = name;
+  }),
+
   incrementDonePomodoroCount: action((state) => {
     state.donePomodoroCount++;
   }),
@@ -38,8 +44,13 @@ export const currentTaskStats: CurrentTaskStatsModel = {
       storeActions.tasks.deleteTaskAndCurrent,
       storeActions.tasks.moveTask,
     ],
-    (actions, _, { getStoreState }) => {
-      actions.changeCurrentTask([undefined, '']);
+    (actions, _, { getState, getStoreState }) => {
+      const currentTask = getState();
+      const tasks = getStoreState().tasks.tasks;
+
+      if (!tasks[0]) actions.changeCurrentTask([undefined, '']);
+      else if (currentTask.taskId !== tasks[0].id)
+        actions.changeCurrentTask([tasks[0]?.id || undefined, tasks[0].name]);
     }
   ),
 };
