@@ -32,7 +32,7 @@ export function TimerUseChart({
   const data = createChartData(chartStats, selectedWeek);
 
   const currentDay = new Date().getDay();
-  const activeIndex = (currentDay + 6) % 7;
+  const activeIndex = selectedWeek === 0 ? (currentDay + 6) % 7 : -1;
 
   return (
     <div className={styles.container}>

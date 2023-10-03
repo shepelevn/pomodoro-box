@@ -1,12 +1,13 @@
 TODOs:
+  - Make day highlight only on current week
 
   - Check TODOs console.logs and alerts
   - Check for errors in console
   - Check linter 
 
 
-  - Turn off input autocompletion
   - Make route paths prettier
   - Replace easy-peasy with redux
   - Add tests
   - Add subdropdown for moving tasks
+  - Make currentTask not change when tasks is changed
