@@ -1,0 +1,26 @@
+.currentDayInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.totalTime {
+  height: 260px;
+}
+
+@media (max-width: 1199px) {
+  .currentDayInfo {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .totalTime {
+    flex: 1 1 0;
+    height: auto;
+  }
+
+  .pomodoroCount {
+    flex: 0 0 296px;
+    height: 100%;
+  }
+}

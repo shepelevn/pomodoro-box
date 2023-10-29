@@ -1,0 +1,38 @@
+@use 'scss-global/vars' as vars;
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 25px 83px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  transition-property: opacity;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 1px solid vars.$color-black;
+  }
+
+  &:active {
+    opacity: 1;
+    transition-property: none;
+  }
+}
+
+.title {
+  font-weight: 400;
+  line-height: 17px;
+  margin-bottom: 15px;
+}

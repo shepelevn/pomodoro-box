@@ -1,0 +1,23 @@
+@use 'scss-global/vars' as vars;
+
+.container {
+  min-width: 296px;
+}
+
+.title {
+  margin-bottom: 14px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+}
+
+.text {
+  max-width: 246px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.time {
+  color: vars.$color-secondary;
+  font-weight: 700;
+}

@@ -1,0 +1,27 @@
+.container {
+  display: grid;
+  grid-template-columns: minmax(auto, 508px) minmax(592px, auto);
+  gap: 25px;
+}
+
+.timerPanel {
+  grid-row-end: span 2;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .timerPanel {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .tasksPanel {
+    width: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+.time {
+  position: relative;
+  font-size: 150px;
+  font-weight: 200;
+}
+
+.addButton {
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translate(100%, -65%);
+}
+
+.addButtonIcon {
+  display: block;
+}

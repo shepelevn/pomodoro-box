@@ -1,0 +1,37 @@
+@use 'scss-global/vars' as vars;
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 0;
+  border-top: 1px solid vars.$color-gray-light;
+  font-weight: 300;
+  line-height: 17px;
+
+  &:last-child {
+    border-bottom: 1px solid vars.$color-gray-light;
+  }
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pomodoroCount {
+  width: 29px;
+  height: 29px;
+  padding: 6px 9px 4px 10px;
+  border-radius: 50%;
+  border: 1px solid vars.$color-gray;
+}
+
+.nameInput {
+  background-color: vars.$color-gray-lighter;
+}
+
+.modalContainer {
+  position: absolute;
+}

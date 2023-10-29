@@ -1,0 +1,10 @@
+@use 'scss-global/vars' as vars;
+
+.menuButton {
+  border-radius: 50%;
+
+  &:focus-visible {
+    outline: 1px solid vars.$color-gray-dark;
+    outline-offset: 1px;
+  }
+}

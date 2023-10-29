@@ -1,0 +1,15 @@
+.statisticsHeader {
+  margin-bottom: 30px;
+}
+
+.mainContent {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1199px) {
+  .mainContent {
+    flex-direction: column;
+  }
+}
