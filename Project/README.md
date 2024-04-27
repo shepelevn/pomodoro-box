@@ -1,31 +1,36 @@
 # pomodoro_box
 
-Трекер задач с таймером по методу "Pomodoro"
+Task tracker with timers using the "Pomodoro" method
 
-## Установка и запуск проекта
+## README.md
 
-1. Для запуска данного проекта вам понадобится Node.js и npm.
-2. Склонируйте данный репозиторий к себе на диск. Затем выполните
-   `npm install` для установки.
+* en [English](README.md)
+* ru [Русский](./readme/README.ru.md)
 
-## Команды запуска проекта
+## Installation and launch
 
-* `npm run dev` - Сборка и запуск проекта в режиме разработки.
-  Запускает локальный сервер на `localhost:3000`.
-* `npm run build` - Сборка проекта в режиме production.
+1. Before setting up the project you have to install Node.js and npm
+2. Clone the repository. Then run `npm install` to install dependencies
 
-## Команды тестирования проекта
+## Project scripts
 
-* `npm run lint` - Проверка проекта в ESLint.
-* `npm run lint:fix` - Исправление ошибок проекта в ESLint.
+* `npm run dev` - run the project in development mode.
+  The server listens on `localhost:3000`.
+* `npm run build` - Build the project for production
 
-## Другие команды проекта
+## Testing scripts
 
-* npm run eject - Удаление create-react-app из проекта.
+* `npm run lint` - Check the project with ESLint
+* `npm run lint:fix` - Fix ESLint errors automatically
 
-## Примечания
+## Other scripts
 
-* Верстка сайта выполнена для ширины от 992 пикселя.
-* Для удобства тестирования время таймера и шаг таймера можно поменять в
+* npm run eject - Delete `create-react-app` from the project
+
+## Notes
+
+* The site layout is made for 992 pixels or larger
+* For ease of testing timer time configuration and timer step can be
+  changed in `src/globalVariables.ts`
   `src/globalVariables.ts`.
-* Проект создан при помощи create-react-app.
+* Project is created with `create-react-app`
