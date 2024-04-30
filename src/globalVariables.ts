@@ -1,14 +1,15 @@
-// export const DEFAULT_POMODORO_TIME_MINUTES = 0.5;
-export const DEFAULT_POMODORO_TIME_MINUTES = 25;
-// export const DEFAULT_BREAK_TIME_MINUTES = 0.5;
-export const DEFAULT_BREAK_TIME_MINUTES = 5;
-// export const BIG_BREAK_TIME_MINUTES = 2;
-export const BIG_BREAK_TIME_MINUTES = 25;
+// export const DEFAULT_POMODORO_TIME_MINUTES = 25;
+export const DEFAULT_POMODORO_TIME_MINUTES = 0.5;
+// export const DEFAULT_BREAK_TIME_MINUTES = 5;
+export const DEFAULT_BREAK_TIME_MINUTES = 0.5;
+// export const BIG_BREAK_TIME_MINUTES = 25;
+export const BIG_BREAK_TIME_MINUTES = 2;
 export const BIG_BREAK_NUMBER = 4;
 
 export const MAX_TIMER_TIME_SECONDS = 60 * 60;
 export const ADDED_TIMER_TIME_SECONDS = 60;
-export const TIMER_STEP_MS = 1000;
+// export const TIMER_STEP_MS = 1000;
+export const TIMER_STEP_MS = 100;
 
 export const MAX_NAME_LENGTH = 61;
 
