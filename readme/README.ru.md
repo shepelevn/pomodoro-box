@@ -7,6 +7,13 @@
 * en [English](../README.md)
 * ru [Русский](README.ru.md)
 
+## Технологии используемые в проекте
+
+* Create React App
+* SASS
+* TypeScript
+* React
+
 ## Установка и запуск проекта
 
 1. Для запуска данного проекта вам понадобится Node.js и npm.

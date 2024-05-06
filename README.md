@@ -7,6 +7,13 @@ Task tracker with timers using the "Pomodoro" method
 * en [English](README.md)
 * ru [Русский](./readme/README.ru.md)
 
+## Technologies used in the project
+
+* Create React App
+* SASS
+* TypeScript
+* React
+
 ## Installation and launch
 
 1. Before setting up the project you have to install Node.js and npm
